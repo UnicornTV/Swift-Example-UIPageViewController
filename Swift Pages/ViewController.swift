@@ -13,9 +13,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     var pageViewController : UIPageViewController?
     var pageTitles : Array<String> = ["God vs Man", "Cool Breeze", "Fire Sky"]
     var pageImages : Array<String> = ["page1.png", "page2.png", "page3.png"]
-    
-    @IBAction func startWalkthrough(sender : AnyObject) {
-    }
+    var currentIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +38,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
 
     func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController!
     {
-        var index = PageContentViewController.alloc().pageIndex
-        
-        println(String(index))
+        var index = self.currentIndex
         
         if (index == 0) || (index == NSNotFound) {
             return nil
@@ -50,18 +46,24 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         
         index--
         
+        println("Decreasing Index: \(String(index))")
+        
         return self.viewControllerAtIndex(index)
     }
     
     func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController!
     {
-        var index = PageContentViewController.alloc().pageIndex
-        
-        println(String(index))
+        var index = self.currentIndex
+
+        if index == NSNotFound {
+            return nil
+        }
         
         index++
         
-        if (index == self.pageTitles.count) || (index == NSNotFound) {
+        println("Increasing Index: \(String(index))")
+        
+        if (index == self.pageTitles.count) {
             return nil
         }
         
@@ -80,6 +82,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         pageContentViewController.imageFile = self.pageImages[index]
         pageContentViewController.titleText = self.pageTitles[index]
         pageContentViewController.pageIndex = index
+        self.currentIndex = index
+
         return pageContentViewController
     }
     
