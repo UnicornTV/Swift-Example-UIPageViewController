@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController, UIPageViewControllerDataSource
 {
     var pageViewController : UIPageViewController?
-    var pageTitles : Array<String> = ["Over 200 Tips and Tricks", "Discover Hidden Features", "Bookmark Favorite Tip", "Free Regular Update"]
-    var pageImages : Array<String> = ["page1.png", "page2.png", "page3.png", "page4.png"]
+    var pageTitles : Array<String> = ["God vs Man", "Cool Breeze", "Fire Sky"]
+    var pageImages : Array<String> = ["page1.png", "page2.png", "page3.png"]
     
     @IBAction func startWalkthrough(sender : AnyObject) {
     }
