@@ -38,7 +38,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
 
     func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController!
     {
-        var index = self.currentIndex
+        var index = (viewController as PageContentViewController).pageIndex
         
         if (index == 0) || (index == NSNotFound) {
             return nil
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController!
     {
-        var index = self.currentIndex
+        var index = (viewController as PageContentViewController).pageIndex
 
         if index == NSNotFound {
             return nil
