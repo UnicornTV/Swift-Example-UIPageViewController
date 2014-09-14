@@ -26,7 +26,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
         self.pageViewController!.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
         
-        self.addChildViewController(self.pageViewController)
+        self.addChildViewController(self.pageViewController!)
         self.view.addSubview(self.pageViewController!.view)
         self.pageViewController!.didMoveToParentViewController(self)
     }
@@ -36,8 +36,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         // Dispose of any resources that can be recreated.
     }
 
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController!
-    {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var index = (viewController as PageContentViewController).pageIndex
         
         if (index == 0) || (index == NSNotFound) {
@@ -50,9 +49,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         
         return self.viewControllerAtIndex(index)
     }
-    
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController!
-    {
+
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var index = (viewController as PageContentViewController).pageIndex
 
         if index == NSNotFound {
@@ -78,7 +76,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
         }
         
         // Create a new view controller and pass suitable data.
-        let pageContentViewController = self.storyboard.instantiateViewControllerWithIdentifier("PageContentViewController") as PageContentViewController
+        let pageContentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PageContentViewController") as PageContentViewController
         pageContentViewController.imageFile = self.pageImages[index]
         pageContentViewController.titleText = self.pageTitles[index]
         pageContentViewController.pageIndex = index
