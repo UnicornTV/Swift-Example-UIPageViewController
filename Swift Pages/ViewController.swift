@@ -15,10 +15,10 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
     pageViewController!.dataSource = self
     
-    let startingViewController: InstructionsViewController = viewControllerAtIndex(0)!
+    let startingViewController: InstructionView = viewControllerAtIndex(0)!
     let viewControllers: NSArray = [startingViewController]
     pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
-    pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 30);
+    pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
     
     addChildViewController(pageViewController!)
     view.addSubview(pageViewController!.view)
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
   {
-    var index = (viewController as InstructionsViewController).pageIndex
+    var index = (viewController as InstructionView).pageIndex
     
     if (index == 0) || (index == NSNotFound) {
       return nil
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
   {
-    var index = (viewController as InstructionsViewController).pageIndex
+    var index = (viewController as InstructionView).pageIndex
     
     if index == NSNotFound {
       return nil
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     return viewControllerAtIndex(index)
   }
   
-  func viewControllerAtIndex(index: Int) -> InstructionsViewController?
+  func viewControllerAtIndex(index: Int) -> InstructionView?
   {
     if self.pageTitles.count == 0 || index >= self.pageTitles.count
     {
@@ -68,11 +68,11 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     }
     
     // Create a new view controller and pass suitable data.
-    let pageContentViewController = storyboard!.instantiateViewControllerWithIdentifier("InstructionsViewController") as InstructionsViewController
-    pageContentViewController.imageFile = self.pageImages[index]
-    pageContentViewController.titleText = self.pageTitles[index]
+    let pageContentViewController = InstructionView()
+    pageContentViewController.imageFile = pageImages[index]
+    pageContentViewController.titleText = pageTitles[index]
     pageContentViewController.pageIndex = index
-    self.currentIndex = index
+    currentIndex = index
     
     return pageContentViewController
   }
