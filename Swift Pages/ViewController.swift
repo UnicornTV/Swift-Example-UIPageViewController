@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     
     let startingViewController: InstructionView = viewControllerAtIndex(0)!
     let viewControllers: NSArray = [startingViewController]
-    pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+    pageViewController!.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
     pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
     
     addChildViewController(pageViewController!)
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
   {
-    var index = (viewController as InstructionView).pageIndex
+    var index = (viewController as! InstructionView).pageIndex
     
     if (index == 0) || (index == NSNotFound) {
       return nil
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
   
   func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
   {
-    var index = (viewController as InstructionView).pageIndex
+    var index = (viewController as! InstructionView).pageIndex
     
     if index == NSNotFound {
       return nil
