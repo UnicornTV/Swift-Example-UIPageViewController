@@ -165,6 +165,8 @@
 		6FED3CBE1952B47D00F0862B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Unicorn Ltd";
 				TargetAttributes = {

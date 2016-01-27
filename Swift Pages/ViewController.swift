@@ -16,8 +16,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     pageViewController!.dataSource = self
     
     let startingViewController: InstructionView = viewControllerAtIndex(0)!
-    let viewControllers: NSArray = [startingViewController]
-    pageViewController!.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
+    let viewControllers = [startingViewController]
+    pageViewController!.setViewControllers(viewControllers , direction: .Forward, animated: false, completion: nil)
     pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
     
     addChildViewController(pageViewController!)
