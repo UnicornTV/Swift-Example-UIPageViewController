@@ -20,7 +20,7 @@ class InstructionView: UIViewController
     label.textAlignment = .Center
     view.addSubview(label)
     
-    let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    let button = UIButton(type: UIButtonType.System)
     button.frame = CGRectMake(20, view.frame.height - 110, view.frame.width - 40, 50)
     button.backgroundColor = UIColor(red: 138/255.0, green: 181/255.0, blue: 91/255.0, alpha: 1)
     button.setTitle(titleText, forState: UIControlState.Normal)
