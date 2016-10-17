@@ -12,17 +12,17 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
   {
     super.viewDidLoad()
     
-    pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
     pageViewController!.dataSource = self
     
     let startingViewController: InstructionView = viewControllerAtIndex(0)!
     let viewControllers = [startingViewController]
-    pageViewController!.setViewControllers(viewControllers , direction: .forward, animated: false, completion: nil)
+    pageViewController!.setViewControllers(viewControllers , direction: .Forward, animated: false, completion: nil)
     pageViewController!.view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height);
     
     addChildViewController(pageViewController!)
     view.addSubview(pageViewController!.view)
-    pageViewController!.didMove(toParentViewController: self)
+    pageViewController!.didMoveToParentViewController(self)
   }
   
   override func didReceiveMemoryWarning()
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     super.didReceiveMemoryWarning()
   }
   
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
+  func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
   {
     var index = (viewController as! InstructionView).pageIndex
     
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     return viewControllerAtIndex(index)
   }
   
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
+  func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
   {
     var index = (viewController as! InstructionView).pageIndex
     
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     return viewControllerAtIndex(index)
   }
   
-  func viewControllerAtIndex(_ index: Int) -> InstructionView?
+  func viewControllerAtIndex(index: Int) -> InstructionView?
   {
     if self.pageTitles.count == 0 || index >= self.pageTitles.count
     {
@@ -77,12 +77,12 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     return pageContentViewController
   }
   
-  func presentationCount(for pageViewController: UIPageViewController) -> Int
+  func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
   {
     return self.pageTitles.count
   }
   
-  func presentationIndex(for pageViewController: UIPageViewController) -> Int
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
   {
     return 0
   }
