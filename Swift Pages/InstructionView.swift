@@ -14,17 +14,17 @@ class InstructionView: UIViewController
     
     view.backgroundColor = UIColor(patternImage: UIImage(named: imageFile)!)
     
-    let label = UILabel(frame: CGRectMake(0, 0, view.frame.width, 200))
-    label.textColor = UIColor.whiteColor()
+    let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
+    label.textColor = UIColor.white
     label.text = titleText
-    label.textAlignment = .Center
+    label.textAlignment = .center
     view.addSubview(label)
     
-    let button = UIButton(type: UIButtonType.System)
-    button.frame = CGRectMake(20, view.frame.height - 110, view.frame.width - 40, 50)
+    let button = UIButton(type: UIButtonType.system)
+    button.frame = CGRect(x: 20, y: view.frame.height - 110, width: view.frame.width - 40, height: 50)
     button.backgroundColor = UIColor(red: 138/255.0, green: 181/255.0, blue: 91/255.0, alpha: 1)
-    button.setTitle(titleText, forState: UIControlState.Normal)
-    button.addTarget(self, action: "Action:", forControlEvents: UIControlEvents.TouchUpInside)
+    button.setTitle(titleText, for: UIControlState())
+    button.addTarget(self, action: "Action:", for: UIControlEvents.touchUpInside)
     self.view.addSubview(button)
   }
   
