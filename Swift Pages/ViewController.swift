@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     let startingViewController: InstructionView = viewControllerAtIndex(0)!
     let viewControllers = [startingViewController]
     pageViewController!.setViewControllers(viewControllers , direction: .Forward, animated: false, completion: nil)
-    pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
+    pageViewController!.view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height);
     
     addChildViewController(pageViewController!)
     view.addSubview(pageViewController!.view)
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
       return nil
     }
     
-    index--
+    index -= 1
     
     return viewControllerAtIndex(index)
   }
@@ -51,7 +51,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
       return nil
     }
     
-    index++
+    index += 1
     
     if (index == self.pageTitles.count) {
       return nil
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource
     return self.pageTitles.count
   }
   
-  func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
   {
     return 0
   }
