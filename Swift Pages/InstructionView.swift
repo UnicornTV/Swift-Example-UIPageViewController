@@ -24,13 +24,24 @@ class InstructionView: UIViewController
     button.frame = CGRect(x: 20, y: view.frame.height - 110, width: view.frame.width - 40, height: 50)
     button.backgroundColor = UIColor(red: 138/255.0, green: 181/255.0, blue: 91/255.0, alpha: 1)
     button.setTitle(titleText, for: UIControlState())
-    button.addTarget(self, action: Selector("Action:"), for: .touchUpInside)
+    button.addTarget(self, action: #selector(Action(button:)), for: .touchUpInside)
     self.view.addSubview(button)
   }
   
   override func didReceiveMemoryWarning()
   {
     super.didReceiveMemoryWarning()
+  }
+    
+  func Action(button: UIButton)
+  {
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 6, initialSpringVelocity: 4, options: [], animations: {
+      button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+    }, completion: nil)
+    
+    UIView.animate(withDuration: 0.5, delay: 0.6, usingSpringWithDamping: 2, initialSpringVelocity: 10, options: [], animations: {
+        button.transform = CGAffineTransform.identity
+    }, completion: nil)
   }
   
 }
